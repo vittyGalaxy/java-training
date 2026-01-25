@@ -1,4 +1,4 @@
-package section3;
+package section4;
 
 public class WhileDowhileFor {
     public void iterateWhile(int counter, int extrime){
