@@ -1,20 +1,15 @@
-import java.io.File;
-
-import section3.IfElseSwitch;
+import section3.WhileDowhileFor;
 
 public class Main {
 
     public static void main(String[] args){
-        IfElseSwitch test = new IfElseSwitch();
-        System.out.println(test.max(5, 3, 4));
-
-        System.out.println(test.isNull("trial"));
-
-        System.out.println(IfElseSwitch.getInstance().isNull("text"));
-
-        System.out.println(IfElseSwitch.getInstance().recoverText(1));
-        System.out.println(IfElseSwitch.getInstance().recoverText(2));
-        System.out.println(IfElseSwitch.getInstance().recoverText(3));
-        System.out.println(IfElseSwitch.getInstance().recoverText(4));
+        String[] arr1 = new String[] {"text1", "text2", "text3", "text4", "text5"};
+        int[] arr2 = new int[] {1, 2, 3, 4, 5};
+        WhileDowhileFor w = new WhileDowhileFor();
+        w.iterateWhile(0, 10);
+        w.iterateDowhile(0, 10);
+        w.iterateFor(10);
+        w.iterateForArrString(arr1);
+        w.iterateForArrInt(arr2);
     }
 }
