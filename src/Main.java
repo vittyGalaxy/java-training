@@ -1,12 +1,16 @@
-import section4.BreakContinue;
+import section6.Smartphone;
 
 public class Main {
 
     public static void main(String[] args){
-        BreakContinue b = new BreakContinue();
+        Smartphone sm1 = new Smartphone();
+        sm1.setImei("123123");
+        sm1.setBrand("Apple");
+        sm1.setModel("Iphone 7");
 
-        b.exampleBreak(5, 10);
-        b.exampleContinue1(5, 10);
-        b.exampleContinue2(5, 10);
+        Smartphone sm2 = new Smartphone();
+        sm2.setImei("r6576575");
+        sm2.setBrand("Samsung");
+        sm2.setModel("Note 7");
     }
 }

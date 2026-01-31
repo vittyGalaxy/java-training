@@ -1,4 +1,4 @@
-package section4;
+package section5;
 
 public class IfElseSwitch{
     private static IfElseSwitch singleton;
