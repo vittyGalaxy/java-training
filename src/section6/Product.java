@@ -8,6 +8,9 @@ public class Product {
     private String name;
     private String description;
     private double price;
+    public String agency;
+
+    public static final String productType = "Generic";
 
     public Product(int id, String name, double price){
         super();

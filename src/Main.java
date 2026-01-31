@@ -12,6 +12,7 @@ public class Main {
         for(String string : s1){
             System.out.println(string);
         }
+        p.agency = "Angency 1";
 
         Smartphone s = new Smartphone(234214, "Smartphone", 150.50);
         List<String> s2 = s.getStores();
