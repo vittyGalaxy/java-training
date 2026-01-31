@@ -10,6 +10,10 @@ public class Smartphone extends Product{
     private String model;
     private Display screen;
 
+    public Smartphone(int id, String name, double price){
+        super(id, name, price);
+    }
+
     //getter
     public String getSerialNumber(){
         return this.serialNumber;

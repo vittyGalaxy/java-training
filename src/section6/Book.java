@@ -5,6 +5,10 @@ import java.util.List;
 
 public class Book extends Product{
     private String author;
+    
+    public Book(int id, String name, double price){
+        super(id, name, price);
+    }
 
     // getter
     public String getAuthor(){

@@ -9,6 +9,13 @@ public class Product {
     private String description;
     private double price;
 
+    public Product(int id, String name, double price){
+        super();
+        setId(id);
+        setName(name);
+        setPrice(price);
+    }
+
     // getter
     public int getId(){
         return this.id;
