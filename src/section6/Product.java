@@ -1,5 +1,8 @@
 package section6;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Product {
     private int id;
     private String name;
@@ -38,5 +41,16 @@ public class Product {
 
     public void setPrice(double price){
         this.price = price;
+    }
+
+    public List<String> getStores(){
+        ArrayList<String> t = new ArrayList<String>();
+
+        t.add("shop 1");
+        t.add("shop 2");
+        t.add("shop 3");
+        t.add("shop 4");
+
+        return t;
     }
 }

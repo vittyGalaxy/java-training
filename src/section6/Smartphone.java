@@ -1,6 +1,9 @@
 package section6;
 
-public class Smartphone {
+import java.util.ArrayList;
+import java.util.List;
+
+public class Smartphone extends Product{
     private String serialNumber;
     private String imei;
     private String brand;
@@ -39,5 +42,15 @@ public class Smartphone {
 
     public void setModel(String model){
         this.model = model;
+    }
+
+    @Override
+    public List<String> getStores(){
+        ArrayList<String> t = new ArrayList<String>();
+
+        t.add("shop 1");
+        t.add("shop 2");
+
+        return t;
     }
 }
