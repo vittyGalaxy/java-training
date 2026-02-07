@@ -1,4 +1,7 @@
 package section8;
+import java.util.ArrayList;
+import java.util.List;
+
 import section6.Product;
 
 public class Television extends Product {
@@ -33,5 +36,13 @@ public class Television extends Product {
 
     public void on(){
 
+    }
+
+    @Override
+    public List<String> getStores(){
+        ArrayList<String> t = new ArrayList<String>();
+        t.add("Shop 1");
+        t.add("Shop 3");
+        return t;
     }
 }
