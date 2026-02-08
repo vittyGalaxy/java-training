@@ -1,4 +1,4 @@
-package section8;
+package section7;
 
 public class ElectronicProduct extends Product{
     private String model;

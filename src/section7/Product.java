@@ -1,4 +1,4 @@
-package section8;
+package section7;
 
 public class Product {
     private long id;
