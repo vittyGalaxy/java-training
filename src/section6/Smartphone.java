@@ -31,6 +31,10 @@ public class Smartphone extends Product{
         return this.model;
     }
 
+    public Display getScreen(){
+        return this.screen;
+    }
+
     //setter
     public void setSerialNumber(String serialNumber){
         this.serialNumber = serialNumber;
@@ -46,6 +50,10 @@ public class Smartphone extends Product{
 
     public void setModel(String model){
         this.model = model;
+    }
+
+    public void setScreen(Display screen){
+        this.screen = screen;
     }
 
     @Override

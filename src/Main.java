@@ -1,27 +1,18 @@
-import java.util.ArrayList;
-import java.util.Date;
-
-import section7.Client;
-import section7.OrderLine;
-import section7.SalesOrder;
-import section7.Smartphone;
-import section7.Television;
+import section9.Exceptions;
 
 public class Main {
 
     public static void main(String[] args){
-        Main m = new Main();
+        Exceptions e1 = new Exceptions(null);
+        Exceptions e2 = new Exceptions("Hello World!");
 
-        m.printText(null);
-        m.printText("Hello World!");
-    }
+        e1.printText();
+        e2.printText();
 
-    private void printText(String text){
-        if (text != null){
-            String t = text.concat("...");
-            System.out.println(t);
-        } else{
-            System.out.println("null");
-        }
+        e1.callPrintText();
+        e2.callPrintText();
+
+        e1.printText2();
+        e2.printText2();
     }
 }
