@@ -29,7 +29,17 @@ public class Exceptions {
     public void callPrintText(){
         try{
             printText();
-        } catch (Exception e) {}
+
+            int val = 10;
+
+            if (this.text != null && this.text.length() < val) {
+                System.out.println("the text is less than " + val + " characters");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            System.out.println("finally executed");
+        }
     }
 
     public void printText2(){
