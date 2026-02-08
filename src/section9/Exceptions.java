@@ -42,11 +42,16 @@ public class Exceptions {
         }
     }
 
-    public void printText2(){
-        try {
-            printText();
-        } catch (Exception e){
-            System.out.println(new ExceptionsTest().getMessage());
+    public void printText2() throws ExceptionsTest{
+        if(this.text == null){
+            throw new ExceptionsTest();
         }
+
+        printText();
+    }
+
+    public String execute() throws ExceptionsTest{
+        callPrintText();
+        return "printed text";
     }
 }

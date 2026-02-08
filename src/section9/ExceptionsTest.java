@@ -1,6 +1,6 @@
 package section9;
 
-public class ExceptionsTest extends Throwable{
+public class ExceptionsTest extends Exception{
     private static final long serialVersionUID = -4238970147140958242L;
 
     @Override

@@ -1,4 +1,5 @@
 import section9.Exceptions;
+import section9.ExceptionsTest;
 
 public class Main {
 
@@ -12,7 +13,11 @@ public class Main {
         e1.callPrintText();
         e2.callPrintText();
 
-        e1.printText2();
-        e2.printText2();
+        try {
+            e1.execute();
+            e2.execute();
+        } catch (ExceptionsTest e) {
+            e.printStackTrace();
+        }
     }
 }
