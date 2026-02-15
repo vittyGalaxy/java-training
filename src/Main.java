@@ -1,13 +1,16 @@
-import section9.Exceptions;
-import section9.ExceptionsTest;
+import section10.AbstractProduct;
+import section10.Television;
+import section10.WashingMachine;
 
 public class Main {
 
-    public static void main(String[] args) throws ExceptionsTest{
-        Exceptions e1 = new Exceptions(null);
-        Exceptions e2 = new Exceptions("Hello World!");
-
-        e1.execute();
-        e2.execute();
+    public static void main(String[] args){
+        AbstractProduct p = new Television();
+        p.calculateShipping();
+        p.calculateSales();
+        
+        WashingMachine w = new WashingMachine();
+        w.calculateShipping();
+        w.calculateSales();
     }
 }
