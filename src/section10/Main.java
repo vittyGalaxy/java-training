@@ -1,13 +1,11 @@
-import section10.Apartment;
-import section10.Apartment.InnerRoom;
-import section10.StandardRoom;
-import section10.Action;
-import section10.ActionImplement;
+package section10;
 
+import section10.Apartment;
+import section10.StandardRoom;
 import java.util.List;
+import section10.Apartment.InnerRoom;;
 
 public class Main {
-
     public static void main(String[] args){
         Apartment a = new Apartment();
         a.setFloor(0);
@@ -16,6 +14,7 @@ public class Main {
         a.addRoom(30, "kitchenette");
 
         List<StandardRoom> room1 = a.getStRoom();
+
         for (StandardRoom standardRoom : room1){
             System.out.println(standardRoom.getSquareMeters());
         }
@@ -24,25 +23,5 @@ public class Main {
         for (InnerRoom innerRoom : room2){
             System.out.println(innerRoom.getSquareMeters());
         }
-
-        Main m = new Main();
-        Action a1 = m.performAction();
-        a1.performAction();
-
-        Action a2 = m.performAction2();
-        a2.performAction();
-    }
-    
-    public Action performAction(){
-        return new ActionImplement();
-    }
-
-    public Action performAction2(){
-        return new Action() {
-            @Override
-            public void performAction(){
-                System.out.println("I'm in the anonymous class");
-            }
-        };
     }
 }
