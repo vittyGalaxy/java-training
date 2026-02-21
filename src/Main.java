@@ -1,9 +1,10 @@
-import section11.ArrayListClass;
+import section11.HashMapClass;
 
 public class Main {
 
     public static void main(String[] args){
-        ArrayListClass al = new ArrayListClass();
-        al.exampleArrayList();
+        HashMapClass hm = new HashMapClass();
+        hm.exampleHashMap();
+        hm.getConfig();
     }
 }
