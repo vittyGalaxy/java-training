@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
@@ -36,6 +37,23 @@ public class HashMapClass {
         map.put(sm2.getModel(), sm2);
 
         Set<String> key = map.keySet();
+
+        System.out.println("-------------------------------");
+
+        // for each
+        for(String string : key){
+            System.out.println(string);
+        }
+        
+        System.out.println("-------------------------------");
+
+        // iterator
+        Iterator<String> i2 = key.iterator();
+        while(i2.hasNext()){
+            String k = i2.next();
+
+            System.out.println(k);
+        }
 
         System.out.println("-------------------------------");
         for(String string : key){
