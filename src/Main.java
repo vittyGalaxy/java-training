@@ -1,15 +1,11 @@
-import section13.WritingClass;
-import section13.BufferClass;
+import section13.ReaderClass;
 
 public class Main {
 
     public static void main(String[] args){
-        String dir = "path";
+        String path = "path";
 
-        WritingClass w = new WritingClass();
-        w.exampleFileWriter(dir + "file_writer.txt", "text");
-
-        BufferClass b = new BufferClass();
-        b.exampleBufferedFileWriter(dir + "buffered-writer.txt", new String[] {"Paolo", "Preite", "Java Course", "Advanced!"});
+        ReaderClass r = new ReaderClass();
+        r.exampleFileReader(path + "reading.txt");
     }
 }
