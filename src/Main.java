@@ -1,28 +1,15 @@
-import section13.FilesClass;
-import java.io.File;
+import section13.WritingClass;
+import section13.BufferClass;
 
 public class Main {
 
     public static void main(String[] args){
-        FilesClass f1 = new FilesClass();
-        String path = "path";
-        String file = path + "name_file.txt";
+        String dir = "path";
 
-        f1.createDirectory(path);
-        f1.createFiles(file);
+        WritingClass w = new WritingClass();
+        w.exampleFileWriter(dir + "file_writer.txt", "text");
 
-        File d = new File(path);
-        System.out.println(d.isDirectory());
-
-        File f2 = new File(file);
-        System.out.println(f2.isFile());
-
-        File[] files = d.listFiles();
-
-        for(File file2: files){
-            System.out.println(file2.getName());
-
-            file2.delete();
-        }
+        BufferClass b = new BufferClass();
+        b.exampleBufferedFileWriter(dir + "buffered-writer.txt", new String[] {"Paolo", "Preite", "Java Course", "Advanced!"});
     }
 }
