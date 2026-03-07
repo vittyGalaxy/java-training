@@ -1,11 +1,13 @@
-import section13.ReaderClass;
+import section14.RunnableClass;
+import section14.ThreadClass;
 
 public class Main {
 
     public static void main(String[] args){
-        String path = "path";
+        ThreadClass tc = new ThreadClass();
+        tc.start();
 
-        ReaderClass r = new ReaderClass();
-        r.exampleFileReader(path + "reading.txt");
+        Thread t = new Thread(new RunnableClass());
+        t.start();
     }
 }
