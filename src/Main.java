@@ -1,18 +1,15 @@
-import java.util.LinkedList;
-import java.util.List;
-
-import section14.ConsumerClass;
-import section14.ProducerClass;
+import section14.CounterClass;
+import section14.ReentrantLockClass;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-        List<Integer> sharedBuffer = new LinkedList<Integer>();
-        int size = 4;
+        ReentrantLockClass counter = new ReentrantLockClass();
 
-        Thread pThread = new Thread(new ProducerClass(sharedBuffer, size), "Producer");
-        Thread cThread = new Thread(new ConsumerClass(sharedBuffer, size), "Consumer");
+        CounterClass cc1 = new CounterClass(counter, 10, 50);
+        CounterClass cc2 = new CounterClass(counter, 10, 50);
 
-        pThread.start();
-        cThread.start();
+        // start
+        cc1.start();
+        cc2.start();
     }
 }
