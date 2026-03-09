@@ -1,15 +1,12 @@
-import section14.CounterClass;
-import section14.ReentrantLockClass;
+import section14.TryCatchFinallyClass;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-        ReentrantLockClass counter = new ReentrantLockClass();
-
-        CounterClass cc1 = new CounterClass(counter, 10, 50);
-        CounterClass cc2 = new CounterClass(counter, 10, 50);
+        TryCatchFinallyClass tcf = new TryCatchFinallyClass(10);
 
         // start
-        cc1.start();
-        cc2.start();
+        tcf.start();
+
+        tcf.interrupt();
     }
 }
