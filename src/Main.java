@@ -1,12 +1,21 @@
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+import section14.GetSitePageClass;
 import section14.TryCatchFinallyClass;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-        TryCatchFinallyClass tcf = new TryCatchFinallyClass(10);
+        ExecutorService pool = Executors.newCachedThreadPool();
+        pool.execute(new GetSitePageClass("http://www.getsitepage.it"));
+        pool.execute(new GetSitePageClass("http://www.google.it"));
+        pool.execute(new GetSitePageClass("http://www.amazon.it"));
 
-        // start
-        tcf.start();
+        ExecutorService threadpool = Executors.newCachedThreadPool();
 
-        tcf.interrupt();
+        threadpool.execute(new GetSitePageClass("http://www.getsitepage.it"));
+        threadpool.execute(new GetSitePageClass("http://www.google.it"));
+
+        threadpool.shutdown();
     }
 }
