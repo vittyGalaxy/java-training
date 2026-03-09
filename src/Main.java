@@ -1,21 +1,18 @@
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
 
-import section14.GetSitePageClass;
-import section14.TryCatchFinallyClass;
+import section14.Consumer;
+import section14.Producer;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-        ExecutorService pool = Executors.newCachedThreadPool();
-        pool.execute(new GetSitePageClass("http://www.getsitepage.it"));
-        pool.execute(new GetSitePageClass("http://www.google.it"));
-        pool.execute(new GetSitePageClass("http://www.amazon.it"));
+        BlockingQueue<String> queue = new ArrayBlockingQueue<String>(10);
 
-        ExecutorService threadpool = Executors.newCachedThreadPool();
+        Thread p = new Thread(new Producer(queue));
+        Thread c = new Thread(new Consumer(queue));
 
-        threadpool.execute(new GetSitePageClass("http://www.getsitepage.it"));
-        threadpool.execute(new GetSitePageClass("http://www.google.it"));
-
-        threadpool.shutdown();
+        // start
+        p.start();
+        c.start();
     }
 }
