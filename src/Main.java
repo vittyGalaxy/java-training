@@ -1,66 +1,83 @@
-import java.util.concurrent.Callable;
-
-import section15.GeometricShape;
-import section15.PrintUppercase;
-import section15.Rectangle;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import section15.UserClass;
 
 public class Main {
     public static void main(String[] args) {
-        Thread t1 = new Thread(){
-            @Override
-            public void run() {
-                System.out.println("Thread without Lambda Expressions");
-            }
-        };
+        Main m = new Main();
 
-        Thread t2 = new Thread(() -> System.out.println("Thread created using Lambda Expressions..."));
+        List<UserClass> l = m.listUsers();
 
-        Thread t3 = new Thread(() -> {
-            int count = 0;
-            while(true) {
-                if (count %2 == 0) {
-                    System.out.println("count is: " + count);
-                }
+        List<UserClass> found = m.searchUsers(l, user -> user.getName().equals("Mario"));
+        found = m.searchUsers(l, user -> user.getName().equals("Mario"));
 
-                if (count == 100) {
-                    break;
-                }
+        for (UserClass userFound : found) {
+            System.out.println(userFound.getSurname() + " " + userFound.getName());
+        }
 
-                count++;
-            }
-        });
+        found = m.searchUsersForName(l, "Mario");
+        found = m.searchUsersForSurname(l, "Rossi");
 
-        t1.start();
-        t2.start();
-        t3.start();
+        l.forEach(user -> System.out.println(user.getSurname() + " " + user.getName()));
 
-        Thread t4 = new Thread(() -> {
-            System.out.println("I'm in thread 4");
-            int max = 0;
-            while(max < 10){
-                System.out.println("max: " + max);
-                if (max == 5) {
-                    break;
-                }
-            }
-        });
+        for (UserClass user2 : l) {
+            System.out.println(user2.getSurname() + " " + user2.getName());
+        }
 
-        String name = null;
-        String surname = null;
-        greet(name, surname);
+        Iterator<UserClass> i = l.iterator();
+
+        while (i.hasNext()) {
+            UserClass u = i.next();
+
+            System.out.println(u.getSurname() + " " + u.getName());
+        }
     }
 
-    private static void greet(String name, String surname){
-        Callable<String> callMe = () -> {
-            if (name == null && surname == null) {
-                throw new Exception("Name and surname are not entered");
-            } else if (name == null && surname != null){
-                throw new Exception("The name was not entered");
-            } else if (name != null && surname == null) {
-                throw new Exception("The surname was not entered");
-            } else {
-                return "Hello " + name + " " + surname;
+    private List<UserClass> listUsers() {
+        List<UserClass> users = new ArrayList<UserClass>();
+
+        users.add(new UserClass("Mario", "Rossi", 39, "Roma", "mariorossi@gmail.com", "test"));
+        users.add(new UserClass("Luigi", "Verdi", 39, "Roma", "luigiverdi@gmail.com", "test"));
+
+        return users;
+    }
+
+    public List<UserClass> searchUsers(List<UserClass> user, Predicate<UserClass> p) {
+        List<UserClass> userFound = new ArrayList<UserClass>();
+
+        for (UserClass u : user) {
+            if (p.test(u)) {
+                userFound.add(u);
             }
-        };
+        }
+
+        return userFound;
+    }
+
+    public List<UserClass> searchUsersForName(List<UserClass> user, String name) {
+        List<UserClass> userFound = new ArrayList<UserClass>();
+
+        for (UserClass u : user) {
+            if (u.getName().equals(name)) {
+                userFound.add(u);
+            }
+        }
+
+        return userFound;
+    }
+
+    public List<UserClass> searchUsersForSurname(List<UserClass> user, String surname) {
+        List<UserClass> userFound = new ArrayList<UserClass>();
+
+        for (UserClass u : user) {
+            if (u.getSurname().equals(surname)) {
+                userFound.add(u);
+            }
+        }
+
+        return userFound;
     }
 }
