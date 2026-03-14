@@ -1,38 +1,38 @@
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
+import java.util.function.UnaryOperator;
+
 import section15.UserClass;
 
 public class Main {
     public static void main(String[] args) {
         Main m = new Main();
 
-        List<UserClass> l = m.listUsers();
+        UnaryOperator<String> uo = str -> str.toLowerCase();
+        UnaryOperator<Long> uo2 = val -> val * val;
 
-        List<UserClass> found = m.searchUsers(l, user -> user.getName().equals("Mario"));
-        found = m.searchUsers(l, user -> user.getName().equals("Mario"));
+        System.out.println(uo.apply("Lowercase Print Test"));
 
-        for (UserClass userFound : found) {
-            System.out.println(userFound.getSurname() + " " + userFound.getName());
-        }
+        long n = 10;
+        System.out.println("The square of " + n + " is " + uo2.apply(n));
 
-        found = m.searchUsersForName(l, "Mario");
-        found = m.searchUsersForSurname(l, "Rossi");
 
-        l.forEach(user -> System.out.println(user.getSurname() + " " + user.getName()));
+        BinaryOperator<Double> bo = (a1, a2) -> a1 * a2;
 
-        for (UserClass user2 : l) {
-            System.out.println(user2.getSurname() + " " + user2.getName());
-        }
+        double x = 10.5;
+        double y = 15;
 
-        Iterator<UserClass> i = l.iterator();
+        System.out.println("The multiplication between " + x + " and " + y + " is: " + bo.apply(x, y));
 
-        while (i.hasNext()) {
-            UserClass u = i.next();
+        BinaryOperator<String> bo2 = (s1, s2) -> "Hi " + s1 + " " + s2;
 
-            System.out.println(u.getSurname() + " " + u.getName());
+        List<UserClass> users = m.listUsers();
+        for (UserClass user : users) {
+            System.out.println(bo2.apply(user.getName(), user.getSurname()));
         }
     }
 
