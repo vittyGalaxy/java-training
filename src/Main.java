@@ -12,35 +12,70 @@ public class Main {
     public static void main(String[] args) {
         Main m = new Main();
 
-        UnaryOperator<String> uo = str -> str.toLowerCase();
-        UnaryOperator<Long> uo2 = val -> val * val;
+        List<UserClass> found = m.search(m.listUsers(), user -> user.getSurname().equals("Rossi"));
+        System.out.println("users with the surname Rossi");
 
-        System.out.println(uo.apply("Lowercase Print Test"));
-
-        long n = 10;
-        System.out.println("The square of " + n + " is " + uo2.apply(n));
-
-
-        BinaryOperator<Double> bo = (a1, a2) -> a1 * a2;
-
-        double x = 10.5;
-        double y = 15;
-
-        System.out.println("The multiplication between " + x + " and " + y + " is: " + bo.apply(x, y));
-
-        BinaryOperator<String> bo2 = (s1, s2) -> "Hi " + s1 + " " + s2;
-
-        List<UserClass> users = m.listUsers();
-        for (UserClass user : users) {
-            System.out.println(bo2.apply(user.getName(), user.getSurname()));
+        for (UserClass user : found) {
+            System.out.println(user.getSurname() + " " + user.getName());
         }
+
+        System.out.println("--------------------------------------------------");
+        found = m.search(m.listUsers(), user -> user.getEmail().contains(".it"));
+
+        System.out.println("users with .it emails");
+
+        for (UserClass user : found) {
+            System.out.println(user.getSurname() + " " + user.getName());
+        }
+
+        System.out.println("--------------------------------------------------");
+
+        found = m.search(m.listUsers(), user -> user.getAge() > 40);
+
+        System.out.println("users aged > 40");
+
+        for (UserClass user : found) {
+            System.out.println(user.getSurname() + " " + user.getName());
+        }
+
+        System.out.println("--------------------------------------------------");
+
+        UserClass uc = m.searchUser(m.listUsers(), user -> user.getCityResidence().equals("Roma"));
+
+        if (uc != null) {
+            System.out.println(uc.getSurname() + " " + uc.getName());
+        }
+    }
+
+    public List<UserClass> search(List<UserClass> lUsers, Predicate<UserClass> filter) {
+        List<UserClass> found = new ArrayList<UserClass>();
+
+        for (UserClass user : lUsers) {
+            if (filter.test(user)) {
+                found.add(user);
+            }
+        }
+
+        return found;
+    }
+
+    public UserClass searchUser(List<UserClass> lUsers, Predicate<UserClass> filter) {
+        UserClass found = null;
+        
+        for (UserClass user : lUsers) {
+            if (filter.test(user)) {
+                return user;
+        }
+        }
+
+        return null;
     }
 
     private List<UserClass> listUsers() {
         List<UserClass> users = new ArrayList<UserClass>();
 
-        users.add(new UserClass("Mario", "Rossi", 39, "Roma", "mariorossi@gmail.com", "test"));
-        users.add(new UserClass("Luigi", "Verdi", 39, "Roma", "luigiverdi@gmail.com", "test"));
+        users.add(new UserClass("Mario", "Rossi", 39, "Roma", "mariorossi@gmail.it", "test"));
+        users.add(new UserClass("Luigi", "Verdi", 41, "Milano", "luigiverdi@gmail.it", "test"));
 
         return users;
     }
