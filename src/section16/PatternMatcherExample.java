@@ -1,9 +1,10 @@
 package section16;
 
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class PatternMatcherExample {
-    public void exampleregex() {
+    public void examplePattern() {
         Pattern p = Pattern.compile("\\d");
 
         //----------------------------------------------------------------------------------------
@@ -34,5 +35,52 @@ public class PatternMatcherExample {
 
         //----------------------------------------------------------------------------------------
         System.out.println(p.flags());
+    }
+
+    public void exampleMatcher() {
+        String text = 
+                "<h1>Title</h1>"    +
+                "<p> Text A </p>"   +
+                "<hr/>"             +
+                "<p> Text B</p>"    +
+                "<h2> Title 2</h2>" +
+                "<p> Text C</p>";
+        
+        String regex = "(<p>([^<]+)</p>)";
+
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(text);
+
+        System.out.println("groups present in the regular expression " + regex + ": " + m.groupCount());
+        
+        System.out.println(text);
+        System.out.println("------------------------");
+        System.out.println("FIRST ITERATION");
+        while (m.find()) {
+            System.out.println(m.group());
+            System.out.println(m.group(1));
+            System.out.println(m.group(2));
+            System.out.println("------------------------");
+        }
+
+        System.out.println("SECOND ITERATION");
+
+        while (m.find()) {
+            System.out.println(m.group());
+            System.out.println(m.group(1));
+            System.out.println(m.group(2));
+            System.out.println("------------------------");
+        }
+
+        m.reset();
+        
+        System.out.println("THIRD ITERATION");
+
+        while (m.find()) {
+            System.out.println(m.group());
+            System.out.println(m.group(1));
+            System.out.println(m.group(2));
+            System.out.println("------------------------");
+        }
     }
 }
