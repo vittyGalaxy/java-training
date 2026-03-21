@@ -83,4 +83,43 @@ public class PatternMatcherExample {
             System.out.println("------------------------");
         }
     }
+
+    public boolean emailValidator(String email) {
+        String regex = "[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}";
+
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(email);
+
+        if (m.matches()) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean dateFormatValidator(String date) {
+        String regex = "(0[1-9]|[12][0-9]|3[01])[-/.](0[1-9]|1[012])[-/.](19|20)\\d\\d";
+
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(date);
+
+        if (m.matches()) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean TaxIdCode(String tic) {
+        String regex = "[a-zA-Z]{6}\\d\\d[a-zA-Z]\\d\\d[a-zA-Z]\\d\\d\\d[a-zA-Z]";
+
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(tic);
+
+        if (m.matches()) {
+            return true;
+        }
+
+        return false;
+    }
 }
