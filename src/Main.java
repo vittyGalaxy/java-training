@@ -18,5 +18,8 @@ public class Main {
 
         System.out.println("---------------------------------------------------------------");
         dc.examplePeriodDuration();
+        
+        System.out.println("---------------------------------------------------------------");
+        dc.exampleSimpleDateFormat();
     }
 }

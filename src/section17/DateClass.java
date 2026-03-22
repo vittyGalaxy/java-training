@@ -1,5 +1,7 @@
 package section17;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -67,5 +69,31 @@ public class DateClass {
         Duration d2 = Duration.between(lt1, lt2);
         System.out.println(d2.getSeconds());
         System.out.println(d2.getNano());
+    }
+
+    public void exampleSimpleDateFormat() {
+        Calendar c = new GregorianCalendar();
+        c.set(Calendar.YEAR, 2017);
+        c.set(Calendar.MONTH, 4);
+        c.set(Calendar.DATE, 29);
+        c.set(Calendar.HOUR, 10);
+        c.set(Calendar.MINUTE, 30);
+        c.set(Calendar.SECOND, 25);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        String date = sdf.format(c.getTime());
+
+        System.out.println(date);
+
+        sdf = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss");
+        date = sdf.format(c.getTime());
+        System.out.println(date);
+
+        try {
+            Date d = sdf.parse("01/02/2017 - 23:10:24");
+            System.out.println(d.toString());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 }
