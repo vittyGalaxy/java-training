@@ -1,5 +1,6 @@
 package section17;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Calendar;
@@ -47,10 +48,24 @@ public class DateClass {
         
         LocalTime lt3 = LocalTime.of(15, 30);
         LocalTime lt4 = LocalTime.of(19, 30);
-        
+
         System.out.println(lt1.toString());
         System.out.println(lt2.toString());
         System.out.println(lt3.toString());
         System.out.println(lt4.toString());
+    }
+
+    public void examplePeriodDuration() {
+        Duration d1 = Duration.ofSeconds(10, 40);
+
+        System.out.println(d1.getSeconds());
+        System.out.println(d1.getNano());
+
+        LocalTime lt1 = LocalTime.of(9, 30);
+        LocalTime lt2 = LocalTime.of(13, 30);
+
+        Duration d2 = Duration.between(lt1, lt2);
+        System.out.println(d2.getSeconds());
+        System.out.println(d2.getNano());
     }
 }

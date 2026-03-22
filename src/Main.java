@@ -15,5 +15,8 @@ public class Main {
         
         System.out.println("---------------------------------------------------------------");
         dc.exampleLocalTime();
+
+        System.out.println("---------------------------------------------------------------");
+        dc.examplePeriodDuration();
     }
 }
