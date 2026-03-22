@@ -1,5 +1,7 @@
 package section17;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -23,5 +25,32 @@ public class DateClass {
         System.out.println(c.get(Calendar.DAY_OF_WEEK));
 
         System.out.println(c.getTime());
+    }
+
+    public void exampleLocalDate() {
+        LocalDate ld = LocalDate.of(2017, 3, 29);
+
+        System.out.println(ld.isLeapYear());
+        System.out.println(ld.lengthOfMonth());
+        System.out.println(ld.getDayOfWeek());
+
+        LocalDate ld2 = ld.withYear(2015);
+        System.out.println(ld2.toString());
+
+        LocalDate ld3 = ld.plusMonths(3);
+        System.out.println(ld3.toString());
+    }
+
+    public void exampleLocalTime() {
+        LocalTime lt1 = LocalTime.of(9, 30);
+        LocalTime lt2 = LocalTime.of(13, 30);
+        
+        LocalTime lt3 = LocalTime.of(15, 30);
+        LocalTime lt4 = LocalTime.of(19, 30);
+        
+        System.out.println(lt1.toString());
+        System.out.println(lt2.toString());
+        System.out.println(lt3.toString());
+        System.out.println(lt4.toString());
     }
 }
