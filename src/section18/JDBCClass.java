@@ -78,4 +78,20 @@ public class JDBCClass {
         PreparedStatement ps = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         ps.executeUpdate();
     }
+
+    public void exampleSelect3(String surname) throws SQLException {
+        String sql = "SELECT idclient, name, surname, email, telephone FROM client WHERE surname LIKE ?";
+        PreparedStatement ps = getConnection().prepareStatement(sql);
+        ps.setString(1, surname);
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            System.out.println("idclient = " + rs.getInt(1));
+            System.out.println("name = " + rs.getString(2));
+            System.out.println("surname = " + rs.getString(3));
+            System.out.println("email = " + rs.getString(4));
+            System.out.println("telephone = " + rs.getString(5));
+            System.out.println("--------------------------------------");
+        }
+    }
 }
