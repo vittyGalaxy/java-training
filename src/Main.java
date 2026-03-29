@@ -10,6 +10,9 @@ public class Main {
             System.out.println("------------------------");
             j.exampleSelect();
             j.exampleSelect2();
+            j.exampleInsert("Luca", "Bianchi", "lucabianchi@gmail.com", "9999999");
+            j.exampleUpdate();
+            j.exampleDelete();
         } catch (SQLException e) {
             e.printStackTrace();
         }
