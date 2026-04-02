@@ -20,4 +20,14 @@ public class DownloadPdf extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+    }
+    
+    @Override
+    public void destroy() {
+        super.destroy();
+    }
 }
