@@ -1,0 +1,30 @@
+<DOCTYPE html>
+    <html>
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+            <title>Web Content</title>
+        </head>
+        <body>
+            <ul>
+                <form action="<%=request.getContextPat() + " "/DownloadPdf" %>" method="get">
+                    <label fo="name">Name</label>
+                    <input type=text name="name" value="">
+                    <br>
+                    <label for="surname">Surname</label>
+                    <input type="text" name="surname" value="">
+                    <br>
+                    <button type="submit" name="enter"> Enter</button>
+                </form>
+                <hr>
+                <form action="<%=request.getContextPat() + " "/DownloadPdf" %>" method="post">
+                    <label fo="name">Name</label>
+                    <input type=text name="name" value="">
+                    <br>
+                    <label for="surname">Surname</label>
+                    <input type="text" name="surname" value="">
+                    <br>
+                    <button type="submit" name="enter"> Enter</button>
+                </form>
+            </ul>
+        </body>
+    </html>

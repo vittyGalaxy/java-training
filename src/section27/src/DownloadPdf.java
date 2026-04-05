@@ -1,6 +1,7 @@
-package section27;
+package section27.src;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Enumeration;
 
 import javax.servlet.http.*;
@@ -16,13 +17,40 @@ public class DownloadPdf extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.getWriter().append("Served at: ").append(request.getContextPath());
 
-        response.sendError(404, "error message");
-        response.getWriter().append((String)request.getAttribute("attribute name"));
+        String name = request.getParameter("name");
+        String surname = request.getParameter("surname");
+
+        PrintWriter out = response.getWriter();
+
+        out.println("<!DOCTYPE html>");
+        out.println("<html>");
+        out.println("<head><title>Hello!</title></head>");
+        out.println("<body>");
+        out.println("<p>doPost " + name + " " + surname + "</p>");
+        out.println("</body>");
+        out.println("</html>");
+
+        // response.getWriter().append("Served at: ").append(request.getContextPath());
+
+        // response.sendError(404, "error message");
+        // response.getWriter().append((String)request.getAttribute("attribute name"));
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String name = request.getParameter("name");
+        String surname = request.getParameter("surname");
+
+        PrintWriter out = response.getWriter();
+
+        out.println("<!DOCTYPE html>");
+        out.println("<html>");
+        out.println("<head><title>Hello!</title></head>");
+        out.println("<body>");
+        out.println("<h1>Hello " + name + " " + surname + "</h1>");
+        out.println("</body>");
+        out.println("</html>");
 
         response.addCookie(new Cookie("web-course", "success"));
         response.sendRedirect("getServletInfo()");
@@ -53,8 +81,10 @@ public class DownloadPdf extends HttpServlet {
 
         String[] parameters = request.getParameterValues("pippo");
 
-        for(String s : parameters) {
-            response.getWriter().append(" parameter = " + s);
+        if(parameters != null){
+            for(String s : parameters) {
+                response.getWriter().append(" parameter = " + s);
+            }
         }
 
         request.setAttribute("attribute name", "test value");
