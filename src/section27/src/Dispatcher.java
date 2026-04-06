@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -25,6 +27,15 @@ public class Dispatcher extends HttpServlet{
         if(page != null && page.trim().equals("")) {
             if (page.equals("1")){
                 request.getServletContext().getRequestDispatcher("page1.jsp").include(request, response);
+                List<String> cart = (List<String>) request.getSession().getAttribute("cart");
+                if (cart == null) {
+                    cart = new ArrayList<String>();
+
+                    String item = request.getParameter("item");
+                    if (item != null && ! item.trim().equals("")) {
+                        cart.add(item);
+                    }
+                }
             } else if (page.equals("2")) {
                 request.getServletContext().getRequestDispatcher("page2.jsp").include(request, response);
             }
