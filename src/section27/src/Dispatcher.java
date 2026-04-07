@@ -26,7 +26,7 @@ public class Dispatcher extends HttpServlet{
         String page = request.getParameter("page");
         if(page != null && page.trim().equals("")) {
             if (page.equals("1")){
-                request.getServletContext().getRequestDispatcher("page1.jsp").include(request, response);
+                request.setAttribute("object", "test");
                 List<String> cart = (List<String>) request.getSession().getAttribute("cart");
                 if (cart == null) {
                     cart = new ArrayList<String>();
@@ -36,6 +36,9 @@ public class Dispatcher extends HttpServlet{
                         cart.add(item);
                     }
                 }
+                request.removeAttribute("object");
+                request.getServletContext().getRequestDispatcher("page1.jsp").include(request, response);
+
             } else if (page.equals("2")) {
                 request.getServletContext().getRequestDispatcher("page2.jsp").include(request, response);
             }
