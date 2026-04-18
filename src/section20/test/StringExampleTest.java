@@ -20,9 +20,9 @@ public class StringExampleTest {
 
         String text = "Today is a beautiful sunny day";
 
-        int occ = 3;
+        int occ = 4;
         assertEquals("The number of occurrences is different from the expected one", occ, se.countsOccurrences(text, "a"));
         assertNotNull(text);
-        assertNull("The variable is not null", se);
+        // assertNull("The variable is not null", se);
     }
 }
